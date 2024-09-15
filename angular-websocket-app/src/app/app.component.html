@@ -1,0 +1,23 @@
+<main class="main">
+  <div class="content">
+    <div class="container">
+      <div class="card">
+        <h3>Temperature (F)</h3>
+        <p id="temperature">{{temperature}}</p>
+      </div>
+      <div class="card">
+        <h3>Blood Pressure</h3>
+        <p id="bloodPressure">{{bloodPressure}}</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <button class="button start" (click)="startStreaming()">Start Streaming</button>
+      <button class="button stop" (click)="stopStreaming()">Stop Streaming</button>
+    </div>
+  </div>
+</main>
+
+<router-outlet />
+
+

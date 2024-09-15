@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.0/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+<h2>Patient Data</h2>
+<div id="patientData"></div>
+
+<script>
+    var socket = new SockJS('http
+    ://localhost:8080/ws');
+    var stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, function(frame) {
+        console.log('Connected: ' + frame);
+
+        stompClient.subscribe('/topic/patientData', function(messageOutput) {
+            var message = messageOutput.body;
+            document.getElementById('patientData').innerHTML += '<p>' + message + '</p>';
+        });
+    });
+</script>
+</body>
+</html>
